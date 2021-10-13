@@ -11,7 +11,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
         viewModelBuilder: () => HomeViewModel(),
-        onModelReady: (model) => model.getPhotos(),
+        onModelReady: (model) => model.initState(),
         builder: (context, model, child) => Scaffold(
               appBar: AppBar(
                 title: const Text(

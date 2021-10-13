@@ -38,4 +38,23 @@ class PhotoModel {
     "url": url,
     "thumbnailUrl": thumbnailUrl,
   };
+
+  static Map<String, dynamic> toMap (PhotoModel photoModel) => {
+    "albumId": photoModel.albumId,
+    "id": photoModel.id,
+    "title": photoModel.title,
+    "url": photoModel.url,
+    "thumbnailUrl": photoModel.thumbnailUrl,
+  };
+
+  static String encode (List<PhotoModel> photoModels) => json.encode(
+    photoModels
+         .map<Map<String, dynamic>>((item) => PhotoModel.toMap(item))
+         .toList(),
+  );
+
+  static List<PhotoModel> decode(String photoModels) =>
+      (json.decode(photoModels) as List<dynamic>)
+        .map<PhotoModel>((item) => PhotoModel.fromJson(item))
+         .toList();
 }
